@@ -2,7 +2,7 @@ from collections import defaultdict
 from heapq import heappop, heappush
 from typing import *
 
-def dayThree():
+def dayFour():
     res = 0
     h = defaultdict(int)
     #read
@@ -27,7 +27,7 @@ def dayThree():
     
     return res
 
-def dayThree2():
+def dayFour2():
     res = 0
     # (parts,time)
     h = defaultdict(list)
@@ -57,7 +57,7 @@ def dayThree2():
     
     return res
 
-def dayThree3():
+def dayFour3():
     # first sort first for quest, second for part
     res = 0
     # (quest,part,id,time)
@@ -149,9 +149,9 @@ def dayThree3():
 
 def main():
     print("Hallo")
-    print(dayThree(), "ist die Lösung von Teil 1")
-    print(dayThree2(), "ist die Lösung von Teil 2")
-    print(dayThree3(), "ist die Lösung von Teil 3")
+    print(dayFour(), "ist die Lösung von Teil 1")
+    print(dayFour2(), "ist die Lösung von Teil 2")
+    print(dayFour3(), "ist die Lösung von Teil 3")
 
 if __name__=="__main__":
     main()
