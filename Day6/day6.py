@@ -56,7 +56,39 @@ def daySix2():
     return len(products)
 
 def daySix3():
-    return
+    # ingredient -> products
+    h = defaultdict(list)
+    #read
+    with open("Day6/6_3.txt", 'r') as file:
+        for line in file:
+            product,ingredients = line.strip().split(':')
+            arr = ingredients.split(',')
+            for a in arr:
+                h[a].append(product)
+
+    used = defaultdict(set)
+
+    for start in ["NULLv1","NULLv2","NULLv3"]:
+        q = deque([start])
+        seen_key = set()
+
+        while q:
+            curr = q.popleft()
+            if curr in seen_key:
+                continue
+            # no infinite loop
+            if curr in h:
+                seen_key.add(curr)
+            if curr != start:
+                used[curr].add(start)
+            for i in h[curr]:
+                q.append(i)
+
+    res = 0
+    for v in used.values():
+        if len(v) >= 2:
+            res += 1
+    return res
 
 def main():
     print("Hallo")
