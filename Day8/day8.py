@@ -47,7 +47,7 @@ def dayEight():
 def dayEight2():
     arr = []
     #read
-    with open("Day8/8.txt", 'r') as file:
+    with open("Day8/8_2.txt", 'r') as file:
         for line in file:
             line = line.strip()
             nums = []
@@ -57,6 +57,8 @@ def dayEight2():
                 else:
                     nums.append(0)
             arr.append(nums)
+
+    m, n = len(arr), len(arr[0])
 
     def shadow(ci,cj,di,dj):
         total = 0
@@ -71,36 +73,34 @@ def dayEight2():
             cj += dj
         
         return total
-
-    m,n = len(arr),len(arr[0])
-    res = 0
-
-    dirs = [(1,1),(1,-1),(0,-1),(-1,-1),(-1,1),(0,1)]
     # ↘1,1 = (m//2,0) to (0,leftJ) -> (0,leftJ+2) to (0,rightJ)
     # ↙1,-1 = (m//2,n-1) to (0,rightJ) -> (0,rightJ-2) to (0,leftJ)
-    # ←0,-1 = special just to left
+    # ←0,-2 = special just to left
     # ↖-1,-1 = (m//2,n-1) to (m-1,rightJ) -> (m-1,rightJ-2) to (m-1,leftJ)
     # ↗-1,1 = (m//2,0) to (m-1,leftJ) -> (m-1,leftJ+2) to (m-1,rightJ)
-    # →0,1 = special just to right
+    # →0,2 = special just to right
 
     # start_j = -1 == (m//2,n-1)
     # start_j = 1 == (m//2,0)
     # start_i = -1 == m-1 rightJ and leftJ swap -> if j=-1 its rightJ first
     # start_i = 1 == 0 and if j=1 leftJ first
-    
-
+    dirs = [(1,1),(1,-1),(0,-2),(-1,-1),(-1,1),(0,2)]
+    res = 0
     for di,dj in dirs:
+        for i in range(m):
+            for j in range(n):
 
-        j = 0
-        for i in range(m//2,-1,-1):
-            res += shadow(i,j,di,dj)
-            j += 1
+                if arr[i][j] == 0:
+                    continue
 
-        start = j+1
-        goal = n-start+1
-        for j in range(start,goal+1,2):
-            res += shadow(0,j,di,dj)
-    
+                pi = i-di
+                pj = j-dj
+
+                if (0<=pi<m and 0<=pj<n and arr[pi][pj] != 0):
+                    continue
+
+                res += shadow(i,j,di,dj)
+
     return res
 
 def dayEight3():return
@@ -108,7 +108,7 @@ def dayEight3():return
 def main():
     print("Hallo")
     print(dayEight(), "ist die Lösung von Teil 1")
-    #print(dayEight2(), "ist die Lösung von Teil 2")
+    print(dayEight2(), "ist die Lösung von Teil 2")
     #print(dayEight3(), "ist die Lösung von Teil 3")
 
 if __name__=="__main__":
