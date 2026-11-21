@@ -1,6 +1,6 @@
 from typing import *
 
-def dayNine():
+def dayTen():
     arr = []
     ghosts = []
     with open("Day10/10_1.txt", "r") as file:
@@ -61,7 +61,7 @@ def dayNine():
     
     return res
 
-def dayNine2():
+def dayTen2():
     arr = []
     ghosts = []
     collisions = 10000
@@ -124,13 +124,13 @@ def dayNine2():
 
     return rounds
 
-def dayNine3():return
+def dayTen3():return
 
 def main():
     print("Hallo")
-    print(dayNine(), "ist die Lösung von Teil 1")
-    print(dayNine2(), "ist die Lösung von Teil 2")
-    #print(dayNine3(), "ist die Lösung von Teil 3")
+    print(dayTen(), "ist die Lösung von Teil 1")
+    print(dayTen2(), "ist die Lösung von Teil 2")
+    #print(dayTen3(), "ist die Lösung von Teil 3")
 
 if __name__=="__main__":
     main()
